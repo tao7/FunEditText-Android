@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">FunEditTextDemo</string>
+    <string name="text_hint_one">文本提示内容1</string>
+    <string name="text_hint_two">文本提示内容2</string>
+</resources>
