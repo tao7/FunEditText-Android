@@ -1,58 +1,60 @@
 package cn.changwentao.widget;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Rect;
+import android.support.v7.widget.AppCompatEditText;
 import android.util.AttributeSet;
-import android.widget.EditText;
 
 /**
- * 
+ * An EditText with a hint up down animation.
+ *
  * @author wentao
- * 
  */
-public class FunEditText extends EditText {
-	private FunDrawable mBackgroundDrawable = new FunDrawable(this);
+public class FunEditText extends AppCompatEditText {
+    private FunDrawable mBackgroundDrawable;
 
-	public FunEditText(Context context) {
-		super(context);
-		init();
-	}
+    public FunEditText(Context context) {
+        super(context);
+        init();
+    }
 
-	public FunEditText(Context context, AttributeSet attrs) {
-		super(context, attrs);
-		init();
-	}
+    public FunEditText(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        init();
+    }
 
-	public FunEditText(Context context, AttributeSet attrs, int defStyle) {
-		super(context, attrs, defStyle);
-		init();
-	}
+    public FunEditText(Context context, AttributeSet attrs, int defStyle) {
+        super(context, attrs, defStyle);
+        init();
+    }
 
-	@SuppressLint("NewApi")
-	private void init() {
-		mBackgroundDrawable.setCallback(this);
-		this.setBackground(mBackgroundDrawable);
-	}
+    public FunEditText(Context context, AttributeSet attrs, int defStyleAttr, FunDrawable mBackgroundDrawable) {
+        super(context, attrs, defStyleAttr);
+        init();
+    }
 
-	@Override
-	protected void onFocusChanged(boolean focused, int direction,
-			Rect previouslyFocusedRect) {
-		super.onFocusChanged(focused, direction, previouslyFocusedRect);
-		if (focused) {
-			up();
-		} else {
-			if (this.getText().length() == 0)
-				down();
-		}
-	}
+    private void init() {
+        mBackgroundDrawable = new FunDrawable(this);
+        setBackground(mBackgroundDrawable);
+    }
 
-	private void up() {
-		mBackgroundDrawable.upup();
-	}
+    @Override
+    protected void onFocusChanged(boolean focused, int direction, Rect previouslyFocusedRect) {
+        super.onFocusChanged(focused, direction, previouslyFocusedRect);
+        if (focused) {
+            up();
+        } else {
+            if (getText().length() == 0)
+                down();
+        }
+    }
 
-	private void down() {
-		mBackgroundDrawable.downdown();
-	}
+    private void up() {
+        mBackgroundDrawable.up();
+    }
+
+    private void down() {
+        mBackgroundDrawable.down();
+    }
 
 }

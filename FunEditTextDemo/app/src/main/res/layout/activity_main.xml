@@ -1,55 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
     tools:context="cn.changwentao.fun.MainActivity">
 
-    <cn.changwentao.widget.FunEditText
-        android:id="@+id/editTextOne"
+    <LinearLayout
+        android:id="@+id/headerbar"
+        style="@style/HeaderBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="30dp"
-        android:hint="@string/text_hint_one"
-        android:paddingBottom="15dp"
-        android:paddingLeft="30dp"
-        android:paddingRight="30dp"
-        android:paddingTop="15dp"
-        android:singleLine="true" >
+        android:clickable="true"
+        android:orientation="vertical">
 
-        <requestFocus />
-    </cn.changwentao.widget.FunEditText>
+        <include layout="@layout/toolbar_actionbar" />
+    </LinearLayout>
 
-    <cn.changwentao.widget.FunEditText
-        android:id="@+id/editTextTwo"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextOne"
-        android:layout_marginTop="25dp"
-        android:hint="@string/text_hint_two"
-        android:paddingBottom="15dp"
-        android:paddingLeft="30dp"
-        android:paddingRight="30dp"
-        android:paddingTop="15dp"
-        android:singleLine="true" >
-    </cn.changwentao.widget.FunEditText>
+        android:orientation="vertical"
+        android:padding="15dp">
 
-    <cn.changwentao.widget.FunEditText
-        android:id="@+id/editTextThree"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextTwo"
-        android:layout_marginTop="25dp"
-        android:hint="@string/text_hint_two"
-        android:paddingBottom="15dp"
-        android:paddingLeft="30dp"
-        android:paddingRight="30dp"
-        android:paddingTop="15dp"
-        android:singleLine="true" >
-    </cn.changwentao.widget.FunEditText>
-</RelativeLayout>
+        <cn.changwentao.widget.FunEditText
+            android:id="@+id/editTextOne"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:hint="@string/text_hint_one"
+            android:paddingBottom="15dp"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:paddingTop="15dp"
+            android:singleLine="true">
+
+            <requestFocus />
+        </cn.changwentao.widget.FunEditText>
+
+        <cn.changwentao.widget.FunEditText
+            android:id="@+id/editTextTwo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:hint="@string/text_hint_two"
+            android:paddingBottom="15dp"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:paddingTop="15dp"
+            android:singleLine="true" />
+
+        <cn.changwentao.widget.FunEditText
+            android:id="@+id/editTextThree"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:hint="@string/text_hint_two"
+            android:paddingBottom="15dp"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:paddingTop="15dp"
+            android:singleLine="true" />
+    </LinearLayout>
+</LinearLayout>

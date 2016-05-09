@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="FunEditText">
+        <!-- Background for the FloatingActionButton -->
+        <attr name="backgroundTint"/>
+    </declare-styleable>
+
+</resources>
+

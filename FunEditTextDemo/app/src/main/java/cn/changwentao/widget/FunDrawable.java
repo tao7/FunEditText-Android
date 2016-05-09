@@ -47,17 +47,18 @@ public class FunDrawable extends Drawable {
     private final RectF mRectF = new RectF();
 
     /**
-	 * 
-	 */
+     *
+     */
     @SuppressLint("NewApi")
     public FunDrawable(EditText editText) {
         mEditText = editText;
+        setCallback(mEditText);
 
         mShape = new FunShape();
 
         mPaint.setColor(mColor);
         mTextPaint = new TextPaint(mEditText.getPaint());
-        mTextPaint.setTextSize(58f);
+        mTextPaint.setTextSize(mEditText.getTextSize());
 
         xOffset = mEditText.getPaddingLeft();
         yOffset = mEditText.getBaseline();
@@ -65,14 +66,14 @@ public class FunDrawable extends Drawable {
         mValueAnimator = ObjectAnimator.ofInt(this, "YOffset", 0);
         mValueAnimator.setDuration(200);
 
-        hintText = "文本提示内容";
+        hintText = mEditText.getHint().toString();
         mEditText.setHint("");
     }
 
     @Override
     public boolean getPadding(Rect padding) {
-//        padding.set(mEditText.getPaddingLeft(), mEditText.getPaddingTop() + mPaddingTop,
-//                mEditText.getPaddingRight(), mEditText.getPaddingBottom());
+        padding.set(mEditText.getPaddingStart(), mEditText.getPaddingTop() + mPaddingTop,
+                mEditText.getPaddingEnd(), mEditText.getPaddingBottom());
         return true;
     }
 
@@ -107,7 +108,7 @@ public class FunDrawable extends Drawable {
         if (first) {
             invalidateXY();
             if (!mEditText.isFocused() && mEditText.getText().length() == 0)
-                downdown();
+                down();
             first = false;
         }
 
@@ -141,7 +142,7 @@ public class FunDrawable extends Drawable {
     }
 
     @SuppressLint("NewApi")
-    public void upup() {
+    public void up() {
         invalidateXY();
         mEditText.setHint("");
         mValueAnimator.cancel();
@@ -150,7 +151,7 @@ public class FunDrawable extends Drawable {
     }
 
     @SuppressLint("NewApi")
-    public void downdown() {
+    public void down() {
         invalidateXY();
         mValueAnimator.cancel();
         mValueAnimator.setIntValues(yOffset, YY);
